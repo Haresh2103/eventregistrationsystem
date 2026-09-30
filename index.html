@@ -1,0 +1,284 @@
+GIT + GITHUB WORKFLOW — STEP-BY-STEP COMMANDS
+
+Assumption:
+- Your project is already on your local system.
+- You already created an empty GitHub repository.
+- Replace YOUR_USERNAME and YOUR_REPO with your actual GitHub details.
+
+==================================================
+1. OPEN THE PROJECT FOLDER
+==================================================
+
+cd path/to/your/project
+
+Example:
+cd "C:\Users\YourName\Desktop\my-project"
+
+
+==================================================
+2. INITIALIZE GIT (ONLY IF NOT ALREADY A GIT REPO)
+==================================================
+
+git init
+
+
+==================================================
+3. CHECK THE FILES
+==================================================
+
+git status
+
+
+==================================================
+4. ADD ALL PROJECT FILES
+==================================================
+
+git add .
+
+
+==================================================
+5. COMMIT THE FILES
+==================================================
+
+git commit -m "Initial project commit"
+
+
+==================================================
+6. CONNECT LOCAL REPO TO GITHUB
+==================================================
+
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+
+Check the remote:
+
+git remote -v
+
+
+NOTE:
+If origin is already configured, do NOT run "git remote add origin" again.
+Instead use:
+
+git remote -v
+
+
+==================================================
+7. RENAME THE LOCAL MAIN BRANCH TO MAIN
+==================================================
+
+git branch -M main
+
+
+==================================================
+8. PUSH THE PROJECT TO GITHUB
+==================================================
+
+git push -u origin main
+
+
+==================================================
+9. CREATE A NEW BRANCH FOR REGISTRATION UPDATE
+==================================================
+
+git checkout -b registration-update
+
+OR, using the newer command:
+
+git switch -c registration-update
+
+
+Check the current branch:
+
+git branch
+
+
+==================================================
+10. MODIFY registration.html
+==================================================
+
+Open:
+
+registration.html
+
+Make the required changes and SAVE the file.
+
+
+==================================================
+11. CHECK WHAT CHANGED
+==================================================
+
+git status
+
+To see the exact changes:
+
+git diff
+
+
+==================================================
+12. ADD registration.html
+==================================================
+
+git add registration.html
+
+
+==================================================
+13. COMMIT THE REGISTRATION CHANGES
+==================================================
+
+git commit -m "Update registration page"
+
+
+==================================================
+14. PUSH THE NEW BRANCH TO GITHUB
+==================================================
+
+git push -u origin registration-update
+
+
+==================================================
+15. CREATE THE PULL REQUEST
+==================================================
+
+Go to your GitHub repository in the browser.
+
+You should see an option such as:
+
+"Compare & pull request"
+
+Click it.
+
+Set:
+
+Base repository: YOUR_REPO
+Base branch: main
+Compare branch: registration-update
+
+Add a title, for example:
+
+Update registration page
+
+Add a short description if required.
+
+Click:
+
+"Create pull request"
+
+
+==================================================
+16. MERGE THE PULL REQUEST
+==================================================
+
+Inside the Pull Request page:
+
+1. Review the changes.
+2. Click "Merge pull request".
+3. Click "Confirm merge".
+
+The changes are now merged into GitHub's main branch.
+
+
+==================================================
+17. GO BACK TO YOUR LOCAL MAIN BRANCH
+==================================================
+
+git checkout main
+
+OR:
+
+git switch main
+
+
+==================================================
+18. PULL THE UPDATED PROJECT FROM GITHUB
+==================================================
+
+git pull origin main
+
+
+==================================================
+19. VERIFY THE UPDATED PROJECT
+==================================================
+
+git status
+
+You can also check the latest commits:
+
+git log --oneline --all --decorate -5
+
+
+==================================================
+20. OPTIONAL: DELETE THE OLD LOCAL BRANCH
+==================================================
+
+After the branch has been merged, you can delete it locally:
+
+git branch -d registration-update
+
+If you also want to delete the branch from GitHub:
+
+git push origin --delete registration-update
+
+
+==================================================
+FINAL COMMAND FLOW
+==================================================
+
+cd path/to/your/project
+
+git init
+
+git status
+
+git add .
+
+git commit -m "Initial project commit"
+
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+
+git branch -M main
+
+git push -u origin main
+
+git checkout -b registration-update
+
+# Modify registration.html
+
+git status
+
+git diff
+
+git add registration.html
+
+git commit -m "Update registration page"
+
+git push -u origin registration-update
+
+# Create Pull Request on GitHub:
+# registration-update -> main
+
+# Merge the Pull Request on GitHub
+
+git checkout main
+
+git pull origin main
+
+git status
+
+
+==================================================
+IMPORTANT
+==================================================
+
+If the GitHub repository already contains files/commits,
+you may need to pull or clone it first instead of initializing
+an unrelated local repository.
+
+For an existing GitHub project, the usual starting command is:
+
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+
+Then:
+
+cd YOUR_REPO
+
+After that, follow the branch -> modify -> commit -> push ->
+pull request -> merge -> pull workflow.
